@@ -5,6 +5,7 @@ import time
 
 
 data = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
+dataBody = cv2.CascadeClassifier("haarscascade_fullbody.xml")
 
 webcam = cv2.VideoCapture(0)
 
@@ -26,9 +27,19 @@ while True:
 
     successful_frame_read, frame = webcam.read()
     greyscaleimg = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    bodies = dataBody.detectMultiScale(greyscaleimg)
     faces = data.detectMultiScale(greyscaleimg)
     try:
         if faces.any():
+
+            ping()
+            time.sleep(1800)
+
+    except:
+        pass
+    try:
+        if bodies.any():
+            
 
             ping()
             time.sleep(1800)
