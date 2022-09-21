@@ -2,8 +2,12 @@ import cv2
 from datetime import *
 import yagmail
 import time
-
-yagmail.register("onslowpaddy", "109farnham")
+from dotenv import load_dotenv
+import os
+load_dotenv()
+env_path = Path('.')/'.env'
+load_dotenv(dotenv_path=env_path)
+yagmail.register(os.getenv("USER"), os.getenv("PASSWORD"))
 
 
 data = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
